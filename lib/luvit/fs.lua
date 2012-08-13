@@ -103,9 +103,9 @@ end
 function fs.open(path, flags, mode, callback)
   if callback == nil then
     callback = mode
-    mode = 438 --[[=0666]]
+    mode = 438 --[[=tonumber('0666',8)]]
   else
-    mode = modeNum(mode)
+    mode = modeNum(mode, 438 --[[=tonumber('0666',8)]])
   end
   native.fsOpen(path, flags, mode, callback or default)
 end
